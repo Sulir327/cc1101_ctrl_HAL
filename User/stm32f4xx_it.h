@@ -1,23 +1,37 @@
 /**
   ******************************************************************************
-  * @file    GPIO/IOToggle/stm32f4xx_it.h 
+  * @file    Templates/Inc/stm32f4xx_it.h 
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    19-September-2011
   * @brief   This file contains the headers of the interrupt handlers.
   ******************************************************************************
   * @attention
   *
-  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
-  * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
-  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
-  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
-  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
   *
-  * <h2><center>&copy; COPYRIGHT 2011 STMicroelectronics</center></h2>
+  * Redistribution and use in source and binary forms, with or without modification,
+  * are permitted provided that the following conditions are met:
+  *   1. Redistributions of source code must retain the above copyright notice,
+  *      this list of conditions and the following disclaimer.
+  *   2. Redistributions in binary form must reproduce the above copyright notice,
+  *      this list of conditions and the following disclaimer in the documentation
+  *      and/or other materials provided with the distribution.
+  *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  *      may be used to endorse or promote products derived from this software
+  *      without specific prior written permission.
+  *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  *
   ******************************************************************************
-  */ 
+  */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32F4xx_IT_H
@@ -27,24 +41,7 @@
  extern "C" {
 #endif 
 
-/* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx.h"
-
 /* Exported types ------------------------------------------------------------*/
-__IO uint8_t   SendFlag = 0;         // =1发送无线数据，=0不处理
-__IO uint16_t  SendTime = 1;         // 计数数据发送间隔时间
-__IO uint8_t   RecvFlag = 0;         // =1接收等待时间结束，=0不处理
-__IO uint16_t  RecvWaitTime = 0;     // 接收等待时间
-__IO uint8_t 	CollectCnt = 0;      	// 接收MMA7361L次数
-/* Exported constants --------------------------------------------------------*/
-#define 	SEND_GAP  			100 	// 发送等待0.1s
-#define 	ACK_LENGTH      60   	// 反馈数据包长度  
-#define 	ACK_CNT					ACK_LENGTH/6			// floor(ACK_LENGTH/6)
-uint8_t 	AckBuffer[ACK_LENGTH] = {'a','c','k','n','o','w','l','e','d','g','e'};
-// ADC转化的电压值通过MDA传递到SRAM
-extern __IO uint16_t ADC_ConvertedValue[3];
-// 用于保存转化计算后的电压值
-//float ADC_ConvertedValueLocal[3];
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
@@ -57,14 +54,15 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
+
 void DEBUG_USART_IRQHandler(void);
 void BASIC_TIM_IRQHandler(void);
-void CC1101_GDO2_IRQHandler(void);
-void MMA7361L_ReadHandler(void);
+//void CC1101_GDO2_IRQHandler(void);
+
 #ifdef __cplusplus
 }
 #endif
 
 #endif /* __STM32F4xx_IT_H */
 
-/******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

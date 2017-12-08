@@ -5,10 +5,9 @@
 
 //引脚定义
 /*******************************************************/
-#define USER_KEY_PIN                  GPIO_Pin_0                 
+#define USER_KEY_PIN                  GPIO_PIN_0                 
 #define USER_KEY_GPIO_PORT            GPIOA                      
-#define USER_KEY_GPIO_CLK             RCC_AHB1Periph_GPIOA
-
+#define USER_KEY_GPIO_CLK_ENABLE()    __HAL_RCC_GPIOA_CLK_ENABLE()
 /*******************************************************/
 
  /** 按键按下标置宏
@@ -19,7 +18,7 @@
 #define KEY_OFF	0
 
 void Key_GPIO_Config(void);
-uint8_t Key_Scan(GPIO_TypeDef* GPIOx,u16 GPIO_Pin);
+uint8_t Key_Scan(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin);
 
 #endif /* __LED_H */
 
